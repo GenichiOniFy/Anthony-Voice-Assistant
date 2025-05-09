@@ -1,0 +1,3 @@
+GROQ_api_key = "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"
+PORCUPINE_api_key = "agqOkA4/tqSDr25RFY0f4zDh/IiLR55y1cVu929QYKlTwyCKmg0dgg=="
+TELEGRAM_token = "7509037398:AAFf7icYpSmeGSy1cJRy09M8taEnx4R0q7s"
