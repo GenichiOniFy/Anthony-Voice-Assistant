@@ -24,7 +24,7 @@ class voice_assistant:
             self.temp_memory.append({"role": "user", "content": f"{request}"})
             chat_completion = self.llm.chat.completions.create(
                 messages=self.important_memory + self.temp_memory,
-                model="llama3",
+                model="deepseek-v2",
                 stream=True,
             )
             response = ""

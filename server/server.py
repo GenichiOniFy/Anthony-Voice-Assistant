@@ -1,5 +1,5 @@
-#!/sbin/python3.11
 import json
+import logging
 import re
 import socket
 import subprocess
@@ -7,9 +7,6 @@ import subprocess
 import threading
 import time
 
-from numpy import info
-import logging
-# import torch
 import torch
 from data.class_voice_assistant import voice_assistant
 from openai import OpenAI
@@ -24,14 +21,14 @@ pattern = r"system\((.*?)\)"
 
 logging.basicConfig(
     level=logging.INFO,
-    format='%(message)s',
-    handlers=[logging.StreamHandler()]  # Вывод в stdout
+    format="%(message)s",
+    handlers=[logging.StreamHandler()],  # Вывод в stdout
 )
 
 
 def create_assistant():
     # INIT llm
-    llm = OpenAI(base_url="http://192.168.1.107:11434/v1", api_key="ollama")
+    llm = OpenAI(base_url="http://192.168.1.108:11434/v1", api_key="ollama")
 
     # Init TTS
     modelTTS, _ = torch.hub.load(
@@ -121,7 +118,7 @@ def handle_server(conn, anthony):
                 data = conn.recv(4096).decode("utf-8")
                 if not data:
                     break
-                logging.info("USER:"+data)
+                logging.info("USER:" + data)
                 anthony.think(data, conn=conn, speak=True).encode("utf-8")
 
                 # Выполняем системные команды, если они есть

@@ -98,11 +98,11 @@ while True:
         keyword_index = porcupine.process(pcm)
         print(keyword_index)
         if keyword_index >= 0:
-            recorder.stop()
-            sock.send("Энтони".encode("utf-8"))
-            getting_voice()
+            #recorder.stop()
+            #sock.send("Энтони".encode("utf-8"))
+            #getting_voice()
             # print(voice.decode())
-            recorder.start()
+            #recorder.start()
             t = time.time()
         while time.time() - t <= 5:
             pcm = recorder.read()
@@ -115,5 +115,8 @@ while True:
                     sock.send(text.encode("utf-8"))
                     getting_voice()
                     # print(voice.decode())
+                while is_speaking:
+                    continue
                 t = time.time()
+
                 recorder.start()
